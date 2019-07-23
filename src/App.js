@@ -1,32 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import AWSAppSyncClient, { buildSubscription } from 'aws-appsync';
 import { Rehydrated, graphqlMutation } from 'aws-appsync-react';
+import { graphql } from 'react-apollo';
+import ListTodos from './GraphQLAllTodos';
 import awsmobile from './aws-exports';
 import { ApolloProvider } from 'react-apollo';
 
-
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Todos extends Component {
+    render() {
+        const { listTodos, refetch } = this.props.data;
+        return (
+            <div>
+                <button onClick={() => refetch()}>Refresh</button>
+                <ul>{listTodos && listTodos.items.map(todo => <li key={todo.id}>{todo.id + ' name: ' + todo.name}</li>)}</ul>
+            </div>
+        )
+    }
+}
+const AllTodosWithData = graphql(ListTodos)(Todos);
+
+class App extends Component {
+    render() {
+        return (
+            <div className="App">
+                <AllTodosWithData />
+            </div>
+        );
+    }
 }
 
 const client = new AWSAppSyncClient({
