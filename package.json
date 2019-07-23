@@ -27,5 +27,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "aws-appsync": "^1.8.1",
+    "aws-appsync-react": "^1.2.9",
+    "graphql-tag": "^2.10.1",
+    "react-apollo": "^2.5.8"
   }
 }

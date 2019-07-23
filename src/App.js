@@ -1,4 +1,10 @@
 import React from 'react';
+import AWSAppSyncClient, { buildSubscription } from 'aws-appsync';
+import { Rehydrated, graphqlMutation } from 'aws-appsync-react';
+import awsmobile from './aws-exports';
+import { ApolloProvider } from 'react-apollo';
+
+
 import logo from './logo.svg';
 import './App.css';
 
@@ -23,4 +29,21 @@ function App() {
   );
 }
 
-export default App;
+const client = new AWSAppSyncClient({
+  url: awsmobile.aws_appsync_graphqlEndpoint,
+  region: awsmobile.aws_appsync_region,
+  auth: {
+    type: awsmobile.aws_appsync_authenticationType,
+    apiKey: awsmobile.aws_appsync_apiKey
+  }
+})
+
+const WithProvider = () => (
+    <ApolloProvider client={client}>
+      <Rehydrated>
+        <App />
+      </Rehydrated>
+    </ApolloProvider>
+)
+
+export default WithProvider;
