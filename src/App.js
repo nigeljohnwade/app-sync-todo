@@ -7,12 +7,19 @@ import {
 import { graphql } from 'react-apollo';
 import ListTodos from './GraphQLAllTodos';
 import NewTodo from './GraphQLNewTodo';
+import SubscribeTodos from './GraphQLSubscribeTodos';
 import awsmobile from './aws-exports';
 import { ApolloProvider } from 'react-apollo';
 
 import './App.css';
 
 class Todos extends Component {
+    componentDidMount() {
+        this.props.data.subscribeToMore(
+            buildSubscription(SubscribeTodos, ListTodos)
+        );
+    }
+
     render() {
         const {
             listTodos,
@@ -23,7 +30,11 @@ class Todos extends Component {
                 <button onClick={() => refetch()}>Refresh</button>
                 <ul>
                     {listTodos && listTodos.items.map(todo => {
-                        return <li key={todo.id}>{todo.id + ' name: ' + todo.name}</li>
+                        return (
+                            <li key={todo.id} className={`todo-list__item todo-list__item--${todo.status}`}>
+                                <p>{todo.name}</p>
+                                <p>{todo.description}</p>
+                            </li>)
                     })}
                 </ul>
             </div>
