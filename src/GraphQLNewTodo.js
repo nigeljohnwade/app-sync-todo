@@ -15,5 +15,6 @@ mutation(
     name
     description
     status
+    version
   }
 }`
