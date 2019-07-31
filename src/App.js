@@ -51,13 +51,14 @@ class Todos extends Component {
     handleSaveClick = (todoId) => {
         const { edits: { [todoId]: data }, editing } = this.state;
 
-        const { id, name, description, status, version } = data;
+        const { id, name, description, status, comment, version } = data;
 
         this.props.updateTodo({
             id,
             name,
             description,
             status,
+            comment,
             version,
         });
 
@@ -78,6 +79,7 @@ class Todos extends Component {
     }
 
     onChange(todo, field, event) {
+        console.log(todo, field, event);
         const { edits } = this.state;
 
         edits[todo.id] = edits[todo.id] || {};
@@ -109,6 +111,7 @@ class Todos extends Component {
                 <li key={todo.id} className={`todo-list__item todo-list__item--${todo.status}`}>
                     <input type="text" value={currValues.name || ''} onChange={this.onChange.bind(this, todo, 'name')} placeholder="Name" />
                     <input type="text" value={currValues.description || ''} onChange={this.onChange.bind(this, todo, 'description')} placeholder="Description" />
+                    <input type="text" value={currValues.comment || ''} onChange={this.onChange.bind(this, todo, 'comment')} placeholder="Comment" />
                     <input type="checkbox" checked={currValues.status === 'done'} onChange={this.onChange.bind(this, todo, 'status')} />
                     <button onClick={this.handleSaveClick.bind(this, todo.id)}>Save</button>
                     <button onClick={this.handleCancelClick.bind(this, todo.id)}>Cancel</button>
