@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-scripts": "^3.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -29,8 +29,8 @@
     ]
   },
   "devDependencies": {
-    "aws-appsync": "^1.8.1",
-    "aws-appsync-react": "^1.2.9",
+    "aws-appsync": "^2.0.1",
+    "aws-appsync-react": "^2.0.1",
     "graphql-tag": "^2.10.1",
     "react-apollo": "^2.5.8"
   }

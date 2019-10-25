@@ -10,15 +10,15 @@ import {
     compose,
 } from 'react-apollo';
 
-import ListTodos from './GraphQLAllTodos';
-import ListTodosByStatus from './GraphQLAllTodosByStatus';
-import NewTodo from './GraphQLNewTodo';
-import SubscribeTodos from './GraphQLSubscribeTodos';
-import UpdateTodo from './GraphQLUpdateTodo';
-import DeleteTodo from './GraphQLDeleteTodo';
-import awsmobile from './aws-exports';
+import ListTodos from 'graphql/GraphQLAllTodos';
+import ListTodosByStatus from 'graphql/GraphQLAllTodosByStatus';
+import NewTodo from 'graphql/GraphQLNewTodo';
+import SubscribeTodos from 'graphql/GraphQLSubscribeTodos';
+import UpdateTodo from 'graphql/GraphQLUpdateTodo';
+import DeleteTodo from 'graphql/GraphQLDeleteTodo';
+import awsmobile from 'aws-exports';
 
-import './App.css';
+import 'App.css';
 
 class Todos extends Component {
     state = {
@@ -208,6 +208,7 @@ const AddTodoOffline = graphqlMutation(
 
 class App extends Component {
     render() {
+        console.log(client);
         return (
             <div className="App">
                 <AllTodosWithData />
