@@ -5,9 +5,11 @@ import {
     graphqlMutation,
 } from 'aws-appsync-react';
 import {
+    ApolloProvider,
     graphql,
     compose,
 } from 'react-apollo';
+
 import ListTodos from './GraphQLAllTodos';
 import ListTodosByStatus from './GraphQLAllTodosByStatus';
 import NewTodo from './GraphQLNewTodo';
@@ -15,7 +17,6 @@ import SubscribeTodos from './GraphQLSubscribeTodos';
 import UpdateTodo from './GraphQLUpdateTodo';
 import DeleteTodo from './GraphQLDeleteTodo';
 import awsmobile from './aws-exports';
-import { ApolloProvider } from 'react-apollo';
 
 import './App.css';
 
@@ -50,7 +51,6 @@ class Todos extends Component {
 
     handleSaveClick = (todoId) => {
         const { edits: { [todoId]: data }, editing } = this.state;
-
         const { id, name, description, status, comment, version } = data;
 
         this.props.updateTodo({
@@ -135,6 +135,7 @@ class Todos extends Component {
         );
     }
 }
+
 const AllTodosWithData = compose(
     graphql(ListTodos),
     graphqlMutation(UpdateTodo,
@@ -165,6 +166,7 @@ const TodosByStatus = ({ data: { queryTodosByStatusIndex: { items } = { items: [
         </pre>
     </div>
 );
+
 const TodosByStatusWithData = graphql(ListTodosByStatus)(TodosByStatus);
 
 class AddTodo extends Component {
@@ -192,6 +194,7 @@ class AddTodo extends Component {
         );
     }
 }
+
 const AddTodoOffline = graphqlMutation(
     NewTodo,
     {
