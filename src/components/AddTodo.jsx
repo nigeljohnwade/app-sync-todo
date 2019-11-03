@@ -16,14 +16,21 @@ export class AddTodo extends Component {
     })
   }
 
+  onReset(){
+    this.setState({
+      name: '',
+      description: '',
+    })
+  }
+
   render() {
     // Render the UI to the browser.
     // Could be refactored to use a proper HTML form 
     // named inputs and a submit function.
     return (
       <div>
-        <input onChange={(event) => this.onChange(event, "name")} />
-        <input onChange={(event) => this.onChange(event, "description")} />
+        <input onChange={(event) => this.onChange(event, "name")} value={this.state.name} />
+        <input onChange={(event) => this.onChange(event, "description")} value={this.state.description} />
         {/* 
           this.props.createTodo is the query passed in when this gets
           wrapped by the AddTodOffline provider.
@@ -40,11 +47,14 @@ export class AddTodo extends Component {
           are in the selection set of the query in the second parameter 
           of graphqlMutation.
         */}
-        <button onClick={() => this.props.createTodo({
-          name: this.state.name,
-          description: this.state.description,
-          status: 'pending'
-        })}>
+        <button onClick={() => {
+          this.props.createTodo({
+            name: this.state.name,
+            description: this.state.description,
+            status: 'pending'
+          });
+          this.onReset();
+        }}>
           Add
       </button>
       </div>
