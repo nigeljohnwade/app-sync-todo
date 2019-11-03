@@ -122,9 +122,10 @@ export class Todos extends Component {
           <button onClick={this.handleCancelClick.bind(this, todo.id)}>Cancel</button>
         </li>
         :
-        <li key={todo.id} className={`todo-list__item todo-list__item--${todo.status}`} onClick={this.handleEditClick.bind(this, todo)}>
+        <li key={todo.id} className={`todo-list__item todo-list__item--${todo.status}`}>
           {todo.id + ' name: ' + todo.name}
           <input type="checkbox" checked={todo.status === 'done'} onChange={this.onChange.bind(this, todo, 'status')} />
+          <button onClick={this.handleEditClick.bind(this, todo)}>Edit</button>
           <button onClick={this.handleDeleteClick.bind(this, todo.id)}>Delete</button>
         </li>);
   }
