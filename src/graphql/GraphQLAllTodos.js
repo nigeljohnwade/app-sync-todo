@@ -9,6 +9,7 @@ query {
       description
       status
       version
+      comment
     }
   }
 }`

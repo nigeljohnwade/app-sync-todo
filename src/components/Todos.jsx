@@ -3,6 +3,7 @@ import { buildSubscription } from 'aws-appsync';
 
 import ListTodos from 'graphql/GraphQLAllTodos';
 import SubscribeTodos from 'graphql/GraphQLSubscribeTodos';
+import Todo from './Todo';
 
 export class Todos extends Component {
     state = {
@@ -106,6 +107,7 @@ export class Todos extends Component {
     }
 
     renderTodo = (todo) => {
+        console.log(todo);
         const { editing, edits } = this.state;
 
         const isEditing = editing[todo.id];
@@ -122,12 +124,13 @@ export class Todos extends Component {
                     <button onClick={this.handleCancelClick.bind(this, todo.id)}>Cancel</button>
                 </li>
                 :
-                <li key={todo.id}>
-                    {todo.id + ' name: ' + todo.name}
-                    <input type="checkbox" checked={todo.status === 'done'} onChange={this.onChange.bind(this, todo, 'status')} />
-                    <button onClick={this.handleEditClick.bind(this, todo)}>Edit</button>
-                    <button onClick={this.handleDeleteClick.bind(this, todo.id)}>Delete</button>
-                </li>);
+                <Todo
+                    key={todo.id}
+                    todo={todo}
+                    onChange={this.onChange.bind(this, todo, 'status')}
+                    handleEditClick={this.handleEditClick.bind(this, todo)}
+                    handleDeleteClick={this.handleDeleteClick.bind(this, todo.id)}
+                />);
     }
 
     /**
@@ -149,7 +152,11 @@ export class Todos extends Component {
                 <ul className="stack">
                     {
                         listTodos &&
-                        [...listTodos.items].sort((a, b) => a.name.localeCompare(b.name)).map(this.renderTodo)
+                        [...listTodos.items]
+                            .sort((a, b) => a.name.localeCompare(b.name))
+                            .map(item => {
+                                return this.renderTodo(item)
+                            })
                     }
                 </ul>
             </div>
