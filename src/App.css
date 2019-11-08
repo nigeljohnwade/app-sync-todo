@@ -1,17 +1,28 @@
-.todo-list__item{
-  padding: 8px;
-  margin-bottom: 8px;
-  list-style-type: none;
-  color: white;
-  border: 1px solid black;
+/* Base reset */
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    min-height: 0;
 }
 
-.todo-list__item--pending{
-  background-color: rgb(200, 100, 100);
+/* List reset */
+ul, ol {
+    list-style-type: none;
 }
 
-.todo-list__item--done{
-  background-color: rgb(100, 200, 100);
+
+/* Stack classes from, https://everylayout.dev */
+
+.stack {
+    --space: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
+.stack > * + * {
+    margin-top: var(--space);
+}
