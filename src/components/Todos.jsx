@@ -4,6 +4,7 @@ import { buildSubscription } from 'aws-appsync';
 import ListTodos from 'graphql/GraphQLAllTodos';
 import SubscribeTodos from 'graphql/GraphQLSubscribeTodos';
 import Todo from './Todo';
+import TodoEdit from './TodoEdit';
 
 export class Todos extends Component {
     state = {
@@ -84,7 +85,8 @@ export class Todos extends Component {
         this.props.deleteTodo({ id: todoId });
     }
 
-    onChange(todo, field, event) {
+    onChange(todo, event) {
+        const field = event.target.name;
         console.log(todo, field, event);
         const { edits } = this.state;
 
@@ -115,21 +117,20 @@ export class Todos extends Component {
 
         return (
             isEditing ?
-                <li key={todo.id}>
-                    <input type="text" value={currValues.name || ''} onChange={this.onChange.bind(this, todo, 'name')} placeholder="Name" />
-                    <input type="text" value={currValues.description || ''} onChange={this.onChange.bind(this, todo, 'description')} placeholder="Description" />
-                    <input type="text" value={currValues.comment || ''} onChange={this.onChange.bind(this, todo, 'comment')} placeholder="Comment" />
-                    <input type="checkbox" checked={currValues.status === 'done'} onChange={this.onChange.bind(this, todo, 'status')} />
-                    <button onClick={this.handleSaveClick.bind(this, todo.id)}>Save</button>
-                    <button onClick={this.handleCancelClick.bind(this, todo.id)}>Cancel</button>
-                </li>
+                <TodoEdit
+                    todo={todo}
+                    currValues={currValues}
+                    onChange={this.onChange.bind(this)}
+                    handleSaveClick={this.handleSaveClick.bind(this)}
+                    handleCancelClick={this.handleCancelClick.bind(this)}
+                />
                 :
                 <Todo
                     key={todo.id}
                     todo={todo}
                     onChange={this.onChange.bind(this, todo, 'status')}
                     handleEditClick={this.handleEditClick.bind(this, todo)}
-                    handleDeleteClick={this.handleDeleteClick.bind(this, todo.id)}
+                    handleDeleteClick={this.handleDeleteClick.bind(this)}
                 />);
     }
 
