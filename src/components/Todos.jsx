@@ -26,7 +26,6 @@ export class Todos extends Component {
      *
      */
     componentDidMount() {
-        console.log(this.props);
         this.props.data.subscribeToMore(
             buildSubscription(SubscribeTodos, ListTodos)
         );
@@ -87,7 +86,6 @@ export class Todos extends Component {
 
     onChange(todo, event) {
         const field = event.target.name;
-        console.log(todo, field, event);
         const { edits } = this.state;
 
         edits[todo.id] = edits[todo.id] || {};
@@ -109,12 +107,17 @@ export class Todos extends Component {
     }
 
     renderTodo = (todo) => {
-        console.log(todo);
         const { editing, edits } = this.state;
 
         const isEditing = editing[todo.id];
         const currValues = edits[todo.id];
 
+        /**
+         *
+         * Refactored the copied code here
+         * to put components into their own file
+         *
+         */
         return (
             isEditing ?
                 <TodoEdit
