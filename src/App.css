@@ -13,6 +13,10 @@ ul, ol {
     list-style-type: none;
 }
 
+/* Form and label reset */
+label{
+    display: block;
+}
 
 /* Stack classes from, https://everylayout.dev */
 

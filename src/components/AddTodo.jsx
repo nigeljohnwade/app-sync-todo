@@ -2,72 +2,86 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export class AddTodo extends Component {
-  // Set up state.
-  state = {
-    name: '',
-    description: '',
-  }
+    // Set up state.
+    state = {
+        name: '',
+        description: '',
+    }
 
-  // Event handler that takes an event and the state item.
-  // (Could be) Has been refactored to use named input elements.
-  onChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
+    // Event handler that takes an event and the state item.
+    // (Could be) Has been refactored to use named input elements.
+    onChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
 
-  onReset(){
-    this.setState({
-      name: '',
-      description: '',
-    })
-  }
+    onReset(){
+        this.setState({
+            name: '',
+            description: '',
+        })
+    }
 
-  render() {
-    // Render the UI to the browser.
-    // Could be refactored to use a proper HTML form 
-    // named inputs and a submit function.
-    return (
-      <div>
-        <input
-            onChange={(event) => this.onChange(event)}
-            value={this.state.name}
-            name="name"
-        />
-        <input
-            onChange={(event) => this.onChange(event)}
-            value={this.state.description}
-            name="description"
-        />
-        {/* 
-          this.props.createTodo is the query passed in when this gets
-          wrapped by the AddTodOffline provider.
-          As far as I can tell this ties the componetn fairly tightly with
-          the provider, although I guess that createTodo can reference any
-          createTodo function?
-          To invoke the mutation, you will need to call this function,
-          which is passed as a prop to the component. The prop will be 
-          named after the mutation defined in the GraphQL schema. 
-          In this example, this is createTodo which you call when 
-          clicking a button. Arguments to a mutation can also be passed 
-          such as the name, description, and status below. 
-          Also note that you will need to pass any arguments which 
-          are in the selection set of the query in the second parameter 
-          of graphqlMutation.
-        */}
-        <button onClick={() => {
-          this.props.createTodo({
-            name: this.state.name,
-            description: this.state.description,
-            status: 'pending'
-          });
-          this.onReset();
-        }}>
-          Add
-      </button>
-      </div>
-    );
-  }
+    render() {
+        // Render the UI to the browser.
+        // Could be refactored to use a proper HTML form
+        // named inputs and a submit function.
+        return (
+            <form
+                className="stack"
+                onSubmit={e => {
+                    e.preventDefault();
+                    this.props.createTodo({
+                        name: this.state.name,
+                        description: this.state.description,
+                        status: 'pending'
+                    });
+                    this.onReset();
+                }}
+            >
+                <div>
+                    <label htmlFor="name">Name</label>
+                    <input
+                        onChange={(event) => this.onChange(event)}
+                        value={this.state.name}
+                        id="name"
+                        name="name"
+                    />
+                </div>
+                <div>
+                    <label htmlFor="description">Description</label>
+                    <input
+                        onChange={(event) => this.onChange(event)}
+                        value={this.state.description}
+                        id="description"
+                        name="description"
+                    />
+                </div>
+                <div>
+                    {/*
+                      this.props.createTodo is the query passed in when this gets
+                      wrapped by the AddTodOffline provider.
+                      As far as I can tell this ties the componetn fairly tightly with
+                      the provider, although I guess that createTodo can reference any
+                      createTodo function?
+                      To invoke the mutation, you will need to call this function,
+                      which is passed as a prop to the component. The prop will be
+                      named after the mutation defined in the GraphQL schema.
+                      In this example, this is createTodo which you call when
+                      clicking a button. Arguments to a mutation can also be passed
+                      such as the name, description, and status below.
+                      Also note that you will need to pass any arguments which
+                      are in the selection set of the query in the second parameter
+                      of graphqlMutation.
+                    */}
+                    <button type="submit">
+                        Add
+                    </button>
+                </div>
+            </form>
+        );
+    }
 }
 
 AddTodo.propTypes = {
