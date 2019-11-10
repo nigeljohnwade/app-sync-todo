@@ -9,10 +9,10 @@ export class AddTodo extends Component {
   }
 
   // Event handler that takes an event and the state item.
-  // Could be refactored to use named input elements.
-  onChange(event, type) {
+  // (Could be) Has been refactored to use named input elements.
+  onChange(event) {
     this.setState({
-      [type]: event.target.value
+      [event.target.name]: event.target.value
     })
   }
 
@@ -29,8 +29,16 @@ export class AddTodo extends Component {
     // named inputs and a submit function.
     return (
       <div>
-        <input onChange={(event) => this.onChange(event, "name")} value={this.state.name} />
-        <input onChange={(event) => this.onChange(event, "description")} value={this.state.description} />
+        <input
+            onChange={(event) => this.onChange(event)}
+            value={this.state.name}
+            name="name"
+        />
+        <input
+            onChange={(event) => this.onChange(event)}
+            value={this.state.description}
+            name="description"
+        />
         {/* 
           this.props.createTodo is the query passed in when this gets
           wrapped by the AddTodOffline provider.

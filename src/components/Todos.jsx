@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { buildSubscription } from 'aws-appsync';
 
 import ListTodos from 'graphql/GraphQLAllTodos';
@@ -144,6 +145,7 @@ export class Todos extends Component {
      */
 
     render() {
+        console.log(this.props);
         /* listTodos, refetch come from the graphql HOC?
          * Verfied by logging props, data contains these
          * items.
@@ -167,5 +169,14 @@ export class Todos extends Component {
         );
     }
 }
+
+Todos.propTypes = {
+    updateTodo: PropTypes.func.isRequired,
+    deleteTodo: PropTypes.func.isRequired,
+    data: PropTypes.shape({
+        listTodos: PropTypes.object.isRequired,
+        refetch: PropTypes.func.isRequired,
+    }).isRequired,
+};
 
 export default Todos;
