@@ -1,0 +1,14 @@
+{
+    "master": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-app-sync-todo-master-100854-authRole",
+            "UnauthRoleArn": "arn:aws:iam::112531233990:role/amplify-app-sync-todo-master-100854-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::112531233990:role/amplify-app-sync-todo-master-100854-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-app-sync-todo-master-100854-deployment",
+            "UnauthRoleName": "amplify-app-sync-todo-master-100854-unauthRole",
+            "StackName": "amplify-app-sync-todo-master-100854",
+            "StackId": "arn:aws:cloudformation:eu-west-1:112531233990:stack/amplify-app-sync-todo-master-100854/1a067ec0-03a2-11ea-87c2-026ecba91d00"
+        }
+    }
+}
