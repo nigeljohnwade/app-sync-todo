@@ -10,5 +10,17 @@
             "StackName": "amplify-app-sync-todo-master-100854",
             "StackId": "arn:aws:cloudformation:eu-west-1:112531233990:stack/amplify-app-sync-todo-master-100854/1a067ec0-03a2-11ea-87c2-026ecba91d00"
         }
+    },
+    "develop": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-app-sync-todo-develop-141404-authRole",
+            "UnauthRoleArn": "arn:aws:iam::112531233990:role/amplify-app-sync-todo-develop-141404-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::112531233990:role/amplify-app-sync-todo-develop-141404-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-app-sync-todo-develop-141404-deployment",
+            "UnauthRoleName": "amplify-app-sync-todo-develop-141404-unauthRole",
+            "StackName": "amplify-app-sync-todo-develop-141404",
+            "StackId": "arn:aws:cloudformation:eu-west-1:112531233990:stack/amplify-app-sync-todo-develop-141404/59ac5140-03c4-11ea-ba9b-02beba5c02de"
+        }
     }
 }
