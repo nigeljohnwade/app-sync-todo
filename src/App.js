@@ -11,7 +11,7 @@ import {
 import AllTodosWithData from 'providers/AllTodosWithData';
 import AddTodoOffline from 'providers/AddTodoOffline';
 import ListTodosByStatus from 'graphql/GraphQLAllTodosByStatus';
-import awsmobile from 'aws-exports';
+import awsmobile from 'config/aws';
 
 import 'App.css';
 
