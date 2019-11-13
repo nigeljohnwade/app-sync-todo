@@ -9,15 +9,21 @@ export function Todo({
     return (
         <li>
             <p>{todo.name}</p>
-            <input
-                type="checkbox"
-                checked={todo.status === 'done'}
-                onChange={onChange}
-            />
-            <button onClick={handleEditClick}>Edit</button>
-            <button onClick={e => handleDeleteClick(todo.id, e)}>Delete</button>
+            {onChange &&
+                <input
+                    type="checkbox"
+                    checked={todo.status === 'done'}
+                    onChange={onChange}
+                />
+            }
+            {handleEditClick && <button onClick={handleEditClick}>Edit</button>}
+            {handleDeleteClick && <button onClick={e => handleDeleteClick(todo.id, e)}>Delete</button>}
         </li>
     )
 }
+
+Todo.whyDidYouRender = {
+    logOnDifferentValues: true,
+};
 
 export default Todo;

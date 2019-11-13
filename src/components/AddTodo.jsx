@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { cleanEmptyStrings } from "../graphql/utilities";
 
 export class AddTodo extends Component {
     // Set up state.
@@ -23,6 +24,17 @@ export class AddTodo extends Component {
         })
     }
 
+    submitHandler(e){
+        const todo = {
+            name: this.state.name,
+            description: this.state.description,
+            status: 'pending'
+        }
+        e.preventDefault();
+        this.props.createTodo(cleanEmptyStrings(todo, true));
+        this.onReset();
+    }
+
     render() {
         // Render the UI to the browser.
         // Could be refactored to use a proper HTML form
@@ -31,13 +43,7 @@ export class AddTodo extends Component {
             <form
                 className="stack"
                 onSubmit={e => {
-                    e.preventDefault();
-                    this.props.createTodo({
-                        name: this.state.name,
-                        description: this.state.description,
-                        status: 'pending'
-                    });
-                    this.onReset();
+                    this.submitHandler(e);
                 }}
             >
                 <div>

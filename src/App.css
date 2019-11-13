@@ -17,6 +17,11 @@ ul, ol {
 label{
     display: block;
 }
+/* Application specific */
+
+.section-heading{
+    text-transform: capitalize;
+}
 
 /* Stack classes from, https://everylayout.dev */
 

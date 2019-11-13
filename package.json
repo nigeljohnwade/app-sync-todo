@@ -30,6 +30,7 @@
     ]
   },
   "devDependencies": {
+    "@welldone-software/why-did-you-render": "^3.3.9",
     "aws-appsync": "^2.0.1",
     "aws-appsync-react": "^2.0.1",
     "graphql-tag": "^2.10.1",
