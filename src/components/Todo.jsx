@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 export function Todo({
     todo,
     onChange,
     handleEditClick,
     handleDeleteClick,
-}){
+}) {
     return (
         <li>
             <p>{todo.name}</p>
@@ -22,8 +22,6 @@ export function Todo({
     )
 }
 
-Todo.whyDidYouRender = {
-    logOnDifferentValues: true,
-};
+Todo.whyDidYouRender = true;
 
-export default Todo;
+export default memo(Todo);
