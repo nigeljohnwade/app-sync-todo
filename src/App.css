@@ -23,7 +23,7 @@ label{
     text-transform: capitalize;
 }
 
-/* Stack classes from, https://everylayout.dev */
+/* Stack classes from, https://every-layout.dev */
 
 .stack {
     --space: 1.5rem;
@@ -34,4 +34,20 @@ label{
 
 .stack > * + * {
     margin-top: var(--space);
+}
+
+
+.row {
+    --space: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.row > * + * {
+    margin-left: var(--space);
+}
+
+.flex-filler{
+    flex-grow: 1;
 }

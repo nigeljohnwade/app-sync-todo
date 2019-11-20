@@ -7,8 +7,8 @@ export function Todo({
     handleDeleteClick,
 }) {
     return (
-        <li>
-            <p>{todo.name}</p>
+        <li className="row">
+            <p className="flex-filler">{todo.name}</p>
             {onChange &&
                 <input
                     type="checkbox"
