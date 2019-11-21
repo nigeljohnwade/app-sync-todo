@@ -4,7 +4,7 @@ import { buildSubscription } from 'aws-appsync';
 
 import ListTodos from 'graphql/GraphQLAllTodos';
 import SubscribeTodos from 'graphql/GraphQLSubscribeTodos';
-import {cleanEmptyStrings} from '../graphql/utilities';
+import { cleanEmptyStrings } from 'graphql/utilities';
 import Todo from './Todo';
 import TodoEdit from './TodoEdit';
 
@@ -13,6 +13,8 @@ export class Todos extends Component {
         editing: {},
         edits: {}
     };
+
+    static whyDidYouRender = true;
 
     /**
      *
@@ -139,7 +141,6 @@ export class Todos extends Component {
      */
 
     render() {
-        console.log(this.props);
         /* listTodos, refetch come from the graphql HOC?
          * Verfied by logging props, data contains these
          * items.
@@ -147,7 +148,10 @@ export class Todos extends Component {
         const { listTodos, refetch } = this.props.data;
 
         return (
-            <div>
+            <section>
+                <header>
+                    <h2 className="section-heading">All to-dos</h2>
+                </header>
                 <button onClick={() => refetch()}>Refresh</button>
                 <ul className="stack">
                     {
@@ -159,7 +163,7 @@ export class Todos extends Component {
                             })
                     }
                 </ul>
-            </div>
+            </section>
         );
     }
 }
@@ -168,7 +172,7 @@ Todos.propTypes = {
     updateTodo: PropTypes.func.isRequired,
     deleteTodo: PropTypes.func.isRequired,
     data: PropTypes.shape({
-        listTodos: PropTypes.object.isRequired,
+        listTodos: PropTypes.object,
         refetch: PropTypes.func.isRequired,
     }).isRequired,
 };

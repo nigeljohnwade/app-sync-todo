@@ -8,40 +8,32 @@ import {
     graphql,
 } from 'react-apollo';
 
+import whyDidYouRender from '@welldone-software/why-did-you-render/dist/no-classes-transpile/umd/whyDidYouRender.min.js';
+
 import AllTodosWithData from 'providers/AllTodosWithData';
 import AddTodoOffline from 'providers/AddTodoOffline';
+import TodosByStatusWithData   from 'providers/TodosByStatusWithData';
 import ListTodosByStatus from 'graphql/GraphQLAllTodosByStatus';
 import awsmobile from 'config/aws';
 
 import 'App.css';
 
-const TodosByStatus = ({ data: { queryTodosByStatusIndex: { items } = { items: [] } }, status }) => (
-    <div>
-        <strong>{status}</strong>
-        <pre>
-            {JSON.stringify(items, null, 2)}
-        </pre>
-    </div>
-);
-
-const TodosByStatusWithData = graphql(ListTodosByStatus)(TodosByStatus);
+whyDidYouRender(React);
 
 class App extends Component {
+    static whyDidYouRender = {
+        logOnDifferentValues: true,
+    };
+
     render() {
-        console.log(client);
+        console.log('render App');
         return (
             <div className="App">
+                <h1>To-Do List</h1>
                 <AllTodosWithData />
                 <AddTodoOffline />
-                <hr />
-                <table width="100%">
-                    <tbody>
-                        <tr>
-                            <td width="50%"><TodosByStatusWithData status="done" /></td>
-                            <td width="50%"><TodosByStatusWithData status="pending" /></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <TodosByStatusWithData status="done" />
+                <TodosByStatusWithData status="pending" />
             </div>
         );
     }

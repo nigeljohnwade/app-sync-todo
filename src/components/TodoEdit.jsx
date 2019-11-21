@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 export function TodoEdit({
     todo,
@@ -6,7 +6,7 @@ export function TodoEdit({
     onChange,
     handleSaveClick,
     handleCancelClick,
-}){
+}) {
     return (
         <li key={todo.id}>
             <form
@@ -72,4 +72,6 @@ export function TodoEdit({
     )
 }
 
-export default TodoEdit;
+TodoEdit.whyDidYouRender = true;
+
+export default memo(TodoEdit);
