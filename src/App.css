@@ -19,6 +19,15 @@ label{
 }
 /* Application specific */
 
+section{
+    width: 33%;
+    flex-basis: 33%;
+    max-width: 40ch;
+}
+
+.main{
+    margin:auto;
+}
 .section-heading{
     text-transform: capitalize;
 }

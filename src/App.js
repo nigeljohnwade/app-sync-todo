@@ -8,11 +8,12 @@ import {
     graphql,
 } from 'react-apollo';
 
-import whyDidYouRender from '@welldone-software/why-did-you-render/dist/no-classes-transpile/umd/whyDidYouRender.min.js';
+import whyDidYouRender
+    from '@welldone-software/why-did-you-render/dist/no-classes-transpile/umd/whyDidYouRender.min.js';
 
 import AllTodosWithData from 'providers/AllTodosWithData';
 import AddTodoOffline from 'providers/AddTodoOffline';
-import TodosByStatusWithData   from 'providers/TodosByStatusWithData';
+import TodosByStatusWithData from 'providers/TodosByStatusWithData';
 import ListTodosByStatus from 'graphql/GraphQLAllTodosByStatus';
 import awsmobile from 'config/aws';
 
@@ -28,12 +29,14 @@ class App extends Component {
     render() {
         console.log('render App');
         return (
-            <div className="App">
+            <div className="main">
                 <h1>To-Do List</h1>
-                <AllTodosWithData />
-                <AddTodoOffline />
-                <TodosByStatusWithData status="done" />
-                <TodosByStatusWithData status="pending" />
+                <div className="row">
+                    <AllTodosWithData/>
+                    <AddTodoOffline/>
+                    <TodosByStatusWithData status="done"/>
+                    <TodosByStatusWithData status="pending"/>
+                </div>
             </div>
         );
     }
@@ -51,7 +54,7 @@ const client = new AWSAppSyncClient({
 const WithProvider = () => (
     <ApolloProvider client={client}>
         <Rehydrated>
-            <App />
+            <App/>
         </Rehydrated>
     </ApolloProvider>
 )
