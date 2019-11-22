@@ -19,10 +19,10 @@ label{
 }
 /* Application specific */
 
-section{
-    width: 33%;
-    flex-basis: 33%;
-    max-width: 40ch;
+.board-section{
+    width: 50%;
+    flex-basis: 50%;
+    max-width: 60ch;
 }
 
 .main{

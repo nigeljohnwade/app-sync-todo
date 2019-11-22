@@ -126,6 +126,7 @@ export class Todos extends Component {
                 />
                 :
                 <Todo
+                    longForm
                     key={todo.id}
                     todo={todo}
                     onChange={this.onChange.bind(this, todo, 'status')}
@@ -148,7 +149,7 @@ export class Todos extends Component {
         const { listTodos, refetch } = this.props.data;
 
         return (
-            <section>
+            <section className="flex-filler">
                 <header>
                     <h2 className="section-heading">All to-dos</h2>
                 </header>

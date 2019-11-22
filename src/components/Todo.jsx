@@ -2,13 +2,17 @@ import React, { memo } from 'react';
 
 export function Todo({
     todo,
+    longForm = false,
     onChange,
     handleEditClick,
     handleDeleteClick,
 }) {
     return (
         <li className="row">
-            <p className="flex-filler">{todo.name}</p>
+            <div className="flex-filler">
+                <p >{todo.name}</p>
+                {longForm && <p>{todo.description}</p>}
+            </div>
             {onChange &&
                 <input
                     type="checkbox"

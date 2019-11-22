@@ -9,7 +9,7 @@ export const TodosByStatus = ({
     status,
 }) => {
     return (
-        <section>
+        <section className="board-section">
             <header>
                 <h2 className="section-heading">{status}</h2>
             </header>

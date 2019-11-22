@@ -31,11 +31,11 @@ class App extends Component {
         return (
             <div className="main">
                 <h1>To-Do List</h1>
+                <AddTodoOffline />
+                <AllTodosWithData />
                 <div className="row">
-                    <AllTodosWithData/>
-                    <AddTodoOffline/>
-                    <TodosByStatusWithData status="done"/>
-                    <TodosByStatusWithData status="pending"/>
+                    <TodosByStatusWithData status="done" />
+                    <TodosByStatusWithData status="pending" />
                 </div>
             </div>
         );
@@ -54,7 +54,7 @@ const client = new AWSAppSyncClient({
 const WithProvider = () => (
     <ApolloProvider client={client}>
         <Rehydrated>
-            <App/>
+            <App />
         </Rehydrated>
     </ApolloProvider>
 )
