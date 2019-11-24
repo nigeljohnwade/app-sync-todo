@@ -29,13 +29,16 @@ class App extends Component {
     render() {
         console.log('render App');
         return (
-            <div className="main">
-                <h1>To-Do List</h1>
-                <AddTodoOffline />
-                <AllTodosWithData />
-                <div className="row">
-                    <TodosByStatusWithData status="done" />
-                    <TodosByStatusWithData status="pending" />
+            <div className="main stack">
+                <header className="row">
+                    <h1>To-Do List</h1>
+                    <AddTodoOffline/>
+                </header>
+                <AllTodosWithData/>
+                <div className="row flex-wrap">
+                    <TodosByStatusWithData status="done"/>
+                    <TodosByStatusWithData status="pending"/>
+                    <TodosByStatusWithData status="pending"/>
                 </div>
             </div>
         );
@@ -54,7 +57,7 @@ const client = new AWSAppSyncClient({
 const WithProvider = () => (
     <ApolloProvider client={client}>
         <Rehydrated>
-            <App />
+            <App/>
         </Rehydrated>
     </ApolloProvider>
 )

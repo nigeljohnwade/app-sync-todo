@@ -41,7 +41,7 @@ export class AddTodo extends Component {
         // named inputs and a submit function.
         return (
             <form
-                className="stack"
+                className="row"
                 onSubmit={e => {
                     this.submitHandler(e);
                 }}

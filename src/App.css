@@ -14,24 +14,29 @@ ul, ol {
 }
 
 /* Form and label reset */
-label{
+label {
     display: block;
 }
-/* Application specific */
 
-.board-section{
+/* Application specific */
+.main {
+    width: 100%;
+    max-width: 180ch;
+    margin: auto;
+}
+
+.board-section {
     width: 50%;
     flex-basis: 50%;
-    max-width: 60ch;
+    max-width: calc(60ch - var(--space));
 }
 
-.main{
-    margin:auto;
-}
-.section-heading{
+.section-heading {
     text-transform: capitalize;
 }
 
+
+/* Layout */
 /* Stack classes from, https://every-layout.dev */
 
 .stack {
@@ -45,7 +50,7 @@ label{
     margin-top: var(--space);
 }
 
-
+/* Row calsses, based on stack but horizontal rather than vertical */
 .row {
     --space: 1.5rem;
     display: flex;
@@ -57,6 +62,11 @@ label{
     margin-left: var(--space);
 }
 
-.flex-filler{
+/* Layout utilities */
+.flex-filler {
     flex-grow: 1;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
 }
