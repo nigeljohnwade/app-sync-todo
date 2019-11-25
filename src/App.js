@@ -1,5 +1,10 @@
-import React, { Component } from 'react';
+import React, {
+    Component
+} from 'react';
 import AWSAppSyncClient from 'aws-appsync';
+import Amplify, {
+    Auth
+} from 'aws-amplify';
 import {
     Rehydrated,
 } from 'aws-appsync-react';
@@ -7,18 +12,17 @@ import {
     ApolloProvider,
     graphql,
 } from 'react-apollo';
-
 import whyDidYouRender
     from '@welldone-software/why-did-you-render/dist/no-classes-transpile/umd/whyDidYouRender.min.js';
 
 import AllTodosWithData from 'providers/AllTodosWithData';
 import AddTodoOffline from 'providers/AddTodoOffline';
 import TodosByStatusWithData from 'providers/TodosByStatusWithData';
-import ListTodosByStatus from 'graphql/GraphQLAllTodosByStatus';
 import awsmobile from 'config/aws';
 
 import 'App.css';
 
+Amplify.configure(awsmobile);
 whyDidYouRender(React);
 
 class App extends Component {

@@ -21,6 +21,16 @@
             "UnauthRoleName": "amplify-app-sync-todo-develop-141404-unauthRole",
             "StackName": "amplify-app-sync-todo-develop-141404",
             "StackId": "arn:aws:cloudformation:eu-west-1:112531233990:stack/amplify-app-sync-todo-develop-141404/59ac5140-03c4-11ea-ba9b-02beba5c02de"
+        },
+        "categories": {
+            "auth": {
+                "todoIAMAUTH": {
+                    "facebookAppId": "432220501042558",
+                    "googleClientId": "416489799337-rrg73tah8ekr4eqomis926jl22pb0162",
+                    "amazonAppId": "2f9df44d7d284d6b919d630295ec3752",
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"432220501042558\",\"client_secret\":\"b18919a1ae4e62605f1277f406565cac\"},{\"ProviderName\":\"Google\",\"client_id\":\"416489799337-rrg73tah8ekr4eqomis926jl22pb0162.apps.googleusercontent.com\",\"client_secret\":\"ELLig3RX6K-YOKej29kfurrb\"},{\"ProviderName\":\"LoginWithAmazon\",\"client_id\":\"2f9df44d7d284d6b919d630295ec3752\",\"client_secret\":\"6a2066497d990159b9c341c2cb48a25c5b0c421dc1911a2a390aee3bfdb868b4\"}]"
+                }
+            }
         }
     }
 }
