@@ -2,18 +2,10 @@ import React, {
     Component
 } from 'react';
 import AWSAppSyncClient from 'aws-appsync';
-import Amplify, {
-    Auth
-} from 'aws-amplify';
-import {
-    Rehydrated,
-} from 'aws-appsync-react';
-import {
-    ApolloProvider,
-    graphql,
-} from 'react-apollo';
-import whyDidYouRender
-    from '@welldone-software/why-did-you-render/dist/no-classes-transpile/umd/whyDidYouRender.min.js';
+import { Rehydrated } from 'aws-appsync-react';
+import { ApolloProvider } from 'react-apollo';
+import whyDidYouRender from '@welldone-software/why-did-you-render/dist/no-classes-transpile/umd/whyDidYouRender.min.js';
+import { Auth } from 'aws-amplify';
 
 import AllTodosWithData from 'providers/AllTodosWithData';
 import AddTodoOffline from 'providers/AddTodoOffline';
@@ -22,7 +14,6 @@ import awsmobile from 'config/aws';
 
 import 'App.css';
 
-Amplify.configure(awsmobile);
 whyDidYouRender(React);
 
 class App extends Component {
@@ -31,18 +22,17 @@ class App extends Component {
     };
 
     render() {
-        console.log('render App');
         return (
             <div className="main stack">
                 <header className="row">
                     <h1>To-Do List</h1>
-                    <AddTodoOffline/>
+                    <AddTodoOffline />
                 </header>
-                <AllTodosWithData/>
+                <AllTodosWithData />
                 <div className="row flex-wrap">
-                    <TodosByStatusWithData status="done"/>
-                    <TodosByStatusWithData status="pending"/>
-                    <TodosByStatusWithData status="pending"/>
+                    <TodosByStatusWithData status="done" />
+                    <TodosByStatusWithData status="pending" />
+                    <TodosByStatusWithData status="pending" />
                 </div>
             </div>
         );
@@ -54,14 +44,14 @@ const client = new AWSAppSyncClient({
     region: awsmobile.aws_appsync_region,
     auth: {
         type: awsmobile.aws_appsync_authenticationType,
-        apiKey: awsmobile.aws_appsync_apiKey
+        jwtToken: async () => (await Auth.currentSession()).getIdToken().getJwtToken(),
     }
 })
 
 const WithProvider = () => (
     <ApolloProvider client={client}>
         <Rehydrated>
-            <App/>
+            <App />
         </Rehydrated>
     </ApolloProvider>
 )
