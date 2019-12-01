@@ -15,9 +15,10 @@ export function Todo({
             </div>
             {onChange &&
                 <input
+                    name="status"
                     type="checkbox"
                     checked={todo.status === 'done'}
-                    onChange={onChange}
+                    onChange={e => onChange(todo, e)}
                 />
             }
             {handleEditClick && <button onClick={handleEditClick}>Edit</button>}

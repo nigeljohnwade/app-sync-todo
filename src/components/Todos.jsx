@@ -4,7 +4,6 @@ import { buildSubscription } from 'aws-appsync';
 
 import ListTodos from 'graphql/GraphQLAllTodos';
 import SubscribeTodos from 'graphql/GraphQLSubscribeTodos';
-import { cleanEmptyStrings } from 'graphql/utilities';
 import Todo from './Todo';
 import TodoEdit from './TodoEdit';
 
@@ -62,7 +61,7 @@ export class Todos extends Component {
     handleSaveClick = (todoId) => {
         const { edits: { [todoId]: data }, editing } = this.state;
 
-        this.props.updateTodo(cleanEmptyStrings(data, true));
+        this.props.updateTodo(data);
 
         delete editing[todoId];
 
@@ -129,7 +128,7 @@ export class Todos extends Component {
                     longForm
                     key={todo.id}
                     todo={todo}
-                    onChange={this.onChange.bind(this, todo, 'status')}
+                    onChange={this.onChange.bind(this)}
                     handleEditClick={this.handleEditClick.bind(this, todo)}
                     handleDeleteClick={this.handleDeleteClick.bind(this)}
                 />);

@@ -30,9 +30,9 @@ class App extends Component {
                 </header>
                 <AllTodosWithData />
                 <div className="row flex-wrap">
+                    <TodosByStatusWithData status="pending" />
+                    <TodosByStatusWithData status="doing" />
                     <TodosByStatusWithData status="done" />
-                    <TodosByStatusWithData status="pending" />
-                    <TodosByStatusWithData status="pending" />
                 </div>
             </div>
         );
