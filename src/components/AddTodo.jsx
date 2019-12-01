@@ -17,14 +17,14 @@ export class AddTodo extends Component {
         })
     }
 
-    onReset(){
+    onReset() {
         this.setState({
             name: '',
             description: '',
         })
     }
 
-    submitHandler(e){
+    submitHandler(e) {
         const todo = {
             name: this.state.name,
             description: this.state.description,
@@ -46,23 +46,23 @@ export class AddTodo extends Component {
                     this.submitHandler(e);
                 }}
             >
-                <div>
-                    <label htmlFor="name">Name</label>
+                <div className="input-group">
                     <input
                         onChange={(event) => this.onChange(event)}
                         value={this.state.name}
                         id="name"
                         name="name"
                     />
+                    <label htmlFor="name">Name</label>
                 </div>
-                <div>
-                    <label htmlFor="description">Description</label>
+                <div className="input-group">
                     <input
                         onChange={(event) => this.onChange(event)}
                         value={this.state.description}
                         id="description"
                         name="description"
                     />
+                    <label htmlFor="description">Description</label>
                 </div>
                 <div>
                     {/*
@@ -91,9 +91,9 @@ export class AddTodo extends Component {
 }
 
 AddTodo.propTypes = {
-  // As this component relies on having a createTodo
-  // function passed in make it a required prop
-  createTodo: PropTypes.func.isRequired,
+    // As this component relies on having a createTodo
+    // function passed in make it a required prop
+    createTodo: PropTypes.func.isRequired,
 }
 
 export default AddTodo

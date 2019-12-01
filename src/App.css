@@ -18,6 +18,36 @@ label {
     display: block;
 }
 
+/* Typography */
+body{
+    font-family: "tiny-hands";
+}
+/* Forms */
+.input-group{
+    position: relative;
+    --label-height: 1rem;
+    --input-height: 1.5rem;
+    --input-padding: 0.25rem;
+    --label-offset: -1.5rem;
+}
+.input-group input{
+    height: var(--input-height);
+    padding: var(--input-padding)
+}
+.input-group label{
+    position: absolute;
+    height: var(--label-height);
+    top: var(--input-padding);
+    left: var(--input-padding);
+    transition: top 0.3s ease-in-out;
+    background-color: white;
+}
+.input-group input:focus + label{
+    top: var(--label-offset);
+}
+.input-group input:not-empty + label{
+    top: var(--label-offset);
+}
 /* Application specific */
 .main {
     width: 100%;
