@@ -45,7 +45,7 @@ body{
 .input-group input:focus + label{
     top: var(--label-offset);
 }
-.input-group input:not-empty + label{
+.input-group input:not([value=""]) + label{
     top: var(--label-offset);
 }
 /* Application specific */
