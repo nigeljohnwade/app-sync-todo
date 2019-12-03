@@ -1,48 +1,59 @@
-import React, { memo } from 'react';
+import React, {
+    memo,
+    useState,
+    useEffect,
+} from 'react';
 
 export function Todo({
     todo,
     longForm = false,
-    onChange,
+    updateTodo,
     handleEditClick,
     handleDeleteClick,
 }) {
-    console.log(todo.status);
+    const status = todo.status;
+    const setStatus = (status) =>{
+        updateTodo({
+            ...todo,
+            status: status,
+        });
+    }
+
     return (
         <li className="row">
             <div className="flex-filler">
                 <p >{todo.name} ({todo.status})</p>
                 {longForm && <p>{todo.description}</p>}
             </div>
-            {onChange &&
+            {updateTodo &&
                 <form>
                     <input
                         name={`status`}
                         type="radio"
                         value="draft"
-                        defaultChecked={todo.status === 'draft'}
-                        onChange={e => onChange(todo, e)}
+                        defaultChecked={status === 'draft'}
+                        onChange={e => setStatus(e.target.value)}
                     />
                     <input
                         name={`status`}
                         type="radio"
                         value="pending"
-                        defaultChecked={todo.status === 'pending'}
-                        onChange={e => onChange(todo, e)}
+                        defaultChecked={status === 'pending'}
+                        onChange={e => setStatus(e.target.value)}
                     />
                     <input
                         name={`status`}
                         type="radio"
                         value="doing"
-                        defaultChecked={todo.status === 'doing'}
-                        onChange={e => onChange(todo, e)}
+                        defaultChecked={status === 'doing'}
+                        onChange={e => setStatus(e.target.value)}
                     />
                     <input
                         name={`status`}
                         type="radio"
                         value="done"
-                        defaultChecked={todo.status === 'done'}
-                        onChange={e => onChange(todo, e)}
+                        defaultChecked={status === 'done'}
+                        onChange={e => setStatus(e.target.value)}
                     />
                 </form>
             }

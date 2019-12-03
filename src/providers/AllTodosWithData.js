@@ -15,15 +15,33 @@ import DeleteTodo from 'graphql/GraphQLDeleteTodo';
 export const AllTodosWithData = compose(
   graphql(ListTodos),
   graphqlMutation(UpdateTodo,
-    ({ status }) => ({
-      'auto': ListTodos,
+    ({status}) => {
+      return {
+        'auto': ListTodos,
 
-      // When status is done, add to ListTodosByStatus(status: done), else add to ListTodosByStatus(status: pending)
-      'add': status === 'done' ? { query: ListTodosByStatus, variables: { status: 'done' } } : { query: ListTodosByStatus, variables: { status: 'pending' } },
+        // When status is done, add to ListTodosByStatus(status: done), else add to ListTodosByStatus(status: pending)
+        'add': { query: ListTodosByStatus, variables: { status: status } },
 
-      // When status is done, remove from ListTodosByStatus(status: pending), else remove from ListTodosByStatus(status: done)
-      'remove': status === 'done' ? { query: ListTodosByStatus, variables: { status: 'pending' } } : { query: ListTodosByStatus, variables: { status: 'done' } },
-    }),
+        // When status is done, remove from ListTodosByStatus(status: pending), else remove from ListTodosByStatus(status: done)
+        'remove': status === 'done' ? [
+            { query: ListTodosByStatus, variables: { status: 'pending' } },
+            { query: ListTodosByStatus, variables: { status: 'doing' } },
+            { query: ListTodosByStatus, variables: { status: 'draft' } },
+            ] : status === 'doing' ? [
+            { query: ListTodosByStatus, variables: { status: 'done' } },
+            { query: ListTodosByStatus, variables: { status: 'pending' } },
+            { query: ListTodosByStatus, variables: { status: 'draft' } },
+            ] : status === 'draft' ? [
+            { query: ListTodosByStatus, variables: { status: 'done' } },
+            { query: ListTodosByStatus, variables: { status: 'pending' } },
+            { query: ListTodosByStatus, variables: { status: 'doing' } },
+            ] : [
+            { query: ListTodosByStatus, variables: { status: 'done' } },
+            { query: ListTodosByStatus, variables: { status: 'draft' } },
+            { query: ListTodosByStatus, variables: { status: 'doing' } },
+        ]
+      }
+    },
     'Todo'),
   graphqlMutation(DeleteTodo, {
     'auto': [

@@ -119,7 +119,7 @@ export class Todos extends Component {
                     longForm
                     key={todo.id}
                     todo={todo}
-                    onChange={this.onChange.bind(this)}
+                    updateTodo={this.props.updateTodo}
                     handleEditClick={this.handleEditClick.bind(this, todo)}
                     handleDeleteClick={this.handleDeleteClick.bind(this)}
                 />);
