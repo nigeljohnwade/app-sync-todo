@@ -7,19 +7,44 @@ export function Todo({
     handleEditClick,
     handleDeleteClick,
 }) {
+    console.log(todo.status);
     return (
         <li className="row">
             <div className="flex-filler">
-                <p >{todo.name}</p>
+                <p >{todo.name} ({todo.status})</p>
                 {longForm && <p>{todo.description}</p>}
             </div>
             {onChange &&
-                <input
-                    name="status"
-                    type="checkbox"
-                    checked={todo.status === 'done'}
-                    onChange={e => onChange(todo, e)}
-                />
+                <>
+                    <input
+                        name={`status-${todo.id}`}
+                        type="radio"
+                        value="draft"
+                        defaultChecked={todo.status === 'draft'}
+                        onChange={e => onChange(todo, e)}
+                    />
+                    <input
+                        name={`status-${todo.id}`}
+                        type="radio"
+                        value="pending"
+                        defaultChecked={todo.status === 'pending'}
+                        onChange={e => onChange(todo, e)}
+                    />
+                    <input
+                        name={`status-${todo.id}`}
+                        type="radio"
+                        value="doing"
+                        defaultChecked={todo.status === 'doing'}
+                        onChange={e => onChange(todo, e)}
+                    />
+                    <input
+                        name={`status-${todo.id}`}
+                        type="radio"
+                        value="done"
+                        defaultChecked={todo.status === 'done'}
+                        onChange={e => onChange(todo, e)}
+                    />
+                </>
             }
             {handleEditClick && <button onClick={handleEditClick}>Edit</button>}
             {handleDeleteClick && <button onClick={e => handleDeleteClick(todo.id, e)}>Delete</button>}

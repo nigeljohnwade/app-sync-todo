@@ -85,16 +85,7 @@ export class Todos extends Component {
 
         edits[todo.id] = edits[todo.id] || {};
 
-        let value;
-
-        switch (field) {
-            case 'status':
-                value = event.target.checked ? 'done' : 'pending';
-                break;
-            default:
-                value = event.target.value;
-                break;
-        }
+        const value = event.target.value;
 
         edits[todo.id][field] = value;
 

@@ -55,13 +55,38 @@ export function TodoEdit({
                 </div>
                 <div>
                     <label htmlFor="status">Status</label>
-                    <input
-                        id="status"
-                        name="status"
-                        type="checkbox"
-                        checked={currValues.status === 'done'}
-                        onChange={e => onChange(todo, e)}
-                    />
+                    {onChange &&
+                        <>
+                            <input
+                                name={`status-${todo.id}`}
+                                type="radio"
+                                value="draft"
+                                defaultChecked={todo.status === 'draft'}
+                                onChange={e => onChange(todo, e)}
+                            />
+                            <input
+                                name={`status-${todo.id}`}
+                                type="radio"
+                                value="pending"
+                                defaultChecked={todo.status === 'pending'}
+                                onChange={e => onChange(todo, e)}
+                            />
+                            <input
+                                name={`status-${todo.id}`}
+                                type="radio"
+                                value="doing"
+                                defaultChecked={todo.status === 'doing'}
+                                onChange={e => onChange(todo, e)}
+                            />
+                            <input
+                                name={`status-${todo.id}`}
+                                type="radio"
+                                value="done"
+                                defaultChecked={todo.status === 'done'}
+                                onChange={e => onChange(todo, e)}
+                            />
+                        </>
+                    }
                 </div>
                 <div>
                     <button type="submit">Save</button>
