@@ -58,28 +58,28 @@ export function TodoEdit({
                     {onChange &&
                         <>
                             <input
-                                name={`status-${todo.id}`}
+                                name={`status`}
                                 type="radio"
                                 value="draft"
                                 defaultChecked={todo.status === 'draft'}
                                 onChange={e => onChange(todo, e)}
                             />
                             <input
-                                name={`status-${todo.id}`}
+                                name={`status`}
                                 type="radio"
                                 value="pending"
                                 defaultChecked={todo.status === 'pending'}
                                 onChange={e => onChange(todo, e)}
                             />
                             <input
-                                name={`status-${todo.id}`}
+                                name={`status`}
                                 type="radio"
                                 value="doing"
                                 defaultChecked={todo.status === 'doing'}
                                 onChange={e => onChange(todo, e)}
                             />
                             <input
-                                name={`status-${todo.id}`}
+                                name={`status`}
                                 type="radio"
                                 value="done"
                                 defaultChecked={todo.status === 'done'}

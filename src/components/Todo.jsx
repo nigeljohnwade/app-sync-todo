@@ -15,36 +15,36 @@ export function Todo({
                 {longForm && <p>{todo.description}</p>}
             </div>
             {onChange &&
-                <>
+                <form>
                     <input
-                        name={`status-${todo.id}`}
+                        name={`status`}
                         type="radio"
                         value="draft"
                         defaultChecked={todo.status === 'draft'}
                         onChange={e => onChange(todo, e)}
                     />
                     <input
-                        name={`status-${todo.id}`}
+                        name={`status`}
                         type="radio"
                         value="pending"
                         defaultChecked={todo.status === 'pending'}
                         onChange={e => onChange(todo, e)}
                     />
                     <input
-                        name={`status-${todo.id}`}
+                        name={`status`}
                         type="radio"
                         value="doing"
                         defaultChecked={todo.status === 'doing'}
                         onChange={e => onChange(todo, e)}
                     />
                     <input
-                        name={`status-${todo.id}`}
+                        name={`status`}
                         type="radio"
                         value="done"
                         defaultChecked={todo.status === 'done'}
                         onChange={e => onChange(todo, e)}
                     />
-                </>
+                </form>
             }
             {handleEditClick && <button onClick={handleEditClick}>Edit</button>}
             {handleDeleteClick && <button onClick={e => handleDeleteClick(todo.id, e)}>Delete</button>}

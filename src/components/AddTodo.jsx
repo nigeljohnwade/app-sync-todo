@@ -28,7 +28,7 @@ export class AddTodo extends Component {
         const todo = {
             name: this.state.name,
             description: this.state.description,
-            status: 'pending'
+            status: 'draft'
         }
         e.preventDefault();
         this.props.createTodo(cleanEmptyStrings(todo, true));
