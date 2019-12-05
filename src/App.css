@@ -1,3 +1,5 @@
+/* Fonts */
+
 @font-face{
     font-family: 'tiny-hands';
     src: url(./resources/BFTinyHand-Regular.otf) format("opentype");
@@ -13,21 +15,67 @@
     min-height: 0;
 }
 
+:root{
+    font-size: 16px;
+}
+
 /* List reset */
+
 ul, ol {
     list-style-type: none;
 }
 
 /* Form and label reset */
+
 label {
     display: block;
 }
 
 /* Typography */
+
 body{
     font-family: "tiny-hands";
+    font-size: 1rem;
 }
+
+h1{
+    font-size: 3.177rem;
+}
+
+h2{
+    font-size: 2.618rem;
+}
+
+h3{
+    font-size: 1.963rem;
+}
+
+h4{
+    font-size: 1.618rem;
+}
+h5{
+    font-size:  1.214rem;
+}
+
+.bigger{
+    font-size: 1.214em;
+}
+
+.smaller{
+    font-size: .75em;
+}
+
 /* Forms */
+
+input[type=radio]{
+    width: 1rem;
+    height: 1rem;
+}
+
+input[type=radio] + input[type=radio]{
+    margin-left: 1rem;
+}
+
 .input-group{
     position: relative;
     --label-height: 1rem;
@@ -35,10 +83,12 @@ body{
     --input-padding: 0.25rem;
     --label-offset: -1.5rem;
 }
+
 .input-group input{
     height: var(--input-height);
     padding: var(--input-padding)
 }
+
 .input-group label{
     position: absolute;
     height: var(--label-height);
@@ -47,13 +97,31 @@ body{
     transition: top 0.3s ease-in-out;
     background-color: white;
 }
+
 .input-group input:focus + label{
     top: var(--label-offset);
 }
+
 .input-group input:not([value=""]) + label{
     top: var(--label-offset);
 }
+
+.radio-group{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.button-edit{
+    width: 5rem;
+}
+
+.button-delete{
+    width: 5rem;
+}
+
 /* Application specific */
+
 .main {
     width: 100%;
     max-width: 180ch;
@@ -72,6 +140,7 @@ body{
 
 
 /* Layout */
+
 /* Stack classes from, https://every-layout.dev */
 
 .stack {
@@ -85,7 +154,8 @@ body{
     margin-top: var(--space);
 }
 
-/* Row calsses, based on stack but horizontal rather than vertical */
+/* Row classes, based on stack but horizontal rather than vertical */
+
 .row {
     --space: 1.5rem;
     display: flex;
@@ -93,13 +163,20 @@ body{
     justify-content: flex-start;
 }
 
+.row  > *{
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
 .row > * + * {
     margin-left: var(--space);
 }
 
 /* Layout utilities */
+
 .flex-filler {
     flex-grow: 1;
+    flex-shrink: 1;
 }
 
 .flex-wrap{

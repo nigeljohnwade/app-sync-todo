@@ -22,43 +22,45 @@ export function Todo({
     return (
         <li className="row">
             <div className="flex-filler">
-                <p >{todo.name} ({todo.status})</p>
-                {longForm && <p>{todo.description}</p>}
+                <p className="todo-name bigger">{todo.name} <span className="todo-status smaller">({todo.status})</span></p>
+                {longForm && <p className="todo-description">{todo.description}</p>}
             </div>
             {updateTodo &&
                 <form>
-                    <input
-                        name={`status`}
-                        type="radio"
-                        value="draft"
-                        defaultChecked={status === 'draft'}
-                        onChange={e => setStatus(e.target.value)}
-                    />
-                    <input
-                        name={`status`}
-                        type="radio"
-                        value="pending"
-                        defaultChecked={status === 'pending'}
-                        onChange={e => setStatus(e.target.value)}
-                    />
-                    <input
-                        name={`status`}
-                        type="radio"
-                        value="doing"
-                        defaultChecked={status === 'doing'}
-                        onChange={e => setStatus(e.target.value)}
-                    />
-                    <input
-                        name={`status`}
-                        type="radio"
-                        value="done"
-                        defaultChecked={status === 'done'}
-                        onChange={e => setStatus(e.target.value)}
-                    />
+                    <div className="radio-group">
+                        <input
+                            name={`status`}
+                            type="radio"
+                            value="draft"
+                            defaultChecked={status === 'draft'}
+                            onChange={e => setStatus(e.target.value)}
+                        />
+                        <input
+                            name={`status`}
+                            type="radio"
+                            value="pending"
+                            defaultChecked={status === 'pending'}
+                            onChange={e => setStatus(e.target.value)}
+                        />
+                        <input
+                            name={`status`}
+                            type="radio"
+                            value="doing"
+                            defaultChecked={status === 'doing'}
+                            onChange={e => setStatus(e.target.value)}
+                        />
+                        <input
+                            name={`status`}
+                            type="radio"
+                            value="done"
+                            defaultChecked={status === 'done'}
+                            onChange={e => setStatus(e.target.value)}
+                        />
+                    </div>
                 </form>
             }
-            {handleEditClick && <button onClick={handleEditClick}>Edit</button>}
-            {handleDeleteClick && <button onClick={e => handleDeleteClick(todo.id, e)}>Delete</button>}
+            {handleEditClick && <button className="button=edit" onClick={handleEditClick}>Edit</button>}
+            {handleDeleteClick && <button className="button-delete" onClick={e => handleDeleteClick(todo.id, e)}>Delete</button>}
         </li>
     )
 }
