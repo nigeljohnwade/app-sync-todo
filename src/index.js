@@ -7,8 +7,6 @@ import App from './App';
 import * as serviceWorker from 'serviceWorker';
 import awsmobile from 'config/aws';
 
-import 'index.css';
-
 Amplify.configure(awsmobile);
 
 ReactDOM.render(
