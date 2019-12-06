@@ -17,6 +17,7 @@
 
 :root{
     font-size: 16px;
+    --spacer: 1rem;
 }
 
 /* List reset */
@@ -31,9 +32,15 @@ label {
     display: block;
 }
 
+button{
+    background-color: orange;
+    border-radius: 50%;
+    border: none;
+}
+
 /* Typography */
 
-body{
+body, input, button{
     font-family: "tiny-hands";
     font-size: 1rem;
 }
@@ -76,17 +83,23 @@ input[type=radio] + input[type=radio]{
     margin-left: 1rem;
 }
 
+button{
+    padding: 1rem;
+    min-width: 5rem;
+}
+
 .input-group{
     position: relative;
     --label-height: 1rem;
-    --input-height: 1.5rem;
-    --input-padding: 0.25rem;
-    --label-offset: -1.5rem;
+    --input-height: 3rem;
+    --input-padding: 0.75rem;
+    --label-offset: -2.5rem;
 }
 
 .input-group input{
     height: var(--input-height);
-    padding: var(--input-padding)
+    padding: var(--input-padding);
+    border-radius: var(--input-padding);
 }
 
 .input-group label{
@@ -112,20 +125,21 @@ input[type=radio] + input[type=radio]{
     align-items: center;
 }
 
-.button-edit{
-    width: 5rem;
-}
-
-.button-delete{
-    width: 5rem;
-}
-
 /* Application specific */
+
+:root{
+    --jaunty-mild: rotate(-11.25deg);
+    --jaunty-mild-alt: rotate(11.25deg);
+}
+
+header{
+    margin-bottom: 2rem;
+}
 
 .main {
     width: 100%;
     max-width: 180ch;
-    margin: auto;
+    margin: 2rem auto;
 }
 
 .board-section {
@@ -138,6 +152,13 @@ input[type=radio] + input[type=radio]{
     text-transform: capitalize;
 }
 
+.jaunty{
+    transform: var(--jaunty-mild);
+}
+
+.jaunty-alt{
+    transform: var(--jaunty-mild-alt);
+}
 
 /* Layout */
 
@@ -161,11 +182,16 @@ input[type=radio] + input[type=radio]{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
 }
 
 .row  > *{
     flex-grow: 0;
     flex-shrink: 0;
+}
+
+.row + .row{
+    margin-top: var(--spacer)
 }
 
 .row > * + * {

@@ -25,7 +25,7 @@ class App extends Component {
         return (
             <div className="main stack">
                 <header className="row">
-                    <h1>To-Do List</h1>
+                    <h1 className="flex-filler">To-Do List</h1>
                     <AddTodoOffline />
                 </header>
                 <AllTodosWithData />

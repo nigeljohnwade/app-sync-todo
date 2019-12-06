@@ -143,7 +143,12 @@ export class Todos extends Component {
                 <header>
                     <h2 className="section-heading">All to-dos</h2>
                 </header>
-                <button onClick={() => refetch()}>Refresh</button>
+                <button
+                    className={`${Math.random() - .666 > 0 ? 'jaunty-alt' : Math.random() - .333 > 0 ?  '' : 'jaunty'}`}
+                    onClick={() => refetch()}
+                >
+                    Refresh
+                </button>
                 <ul className="stack">
                     {
                         listTodos &&

@@ -46,14 +46,18 @@ export class AddTodo extends Component {
                     this.submitHandler(e);
                 }}
             >
-                <div className="input-group">
+                <div
+                    className="input-group"
+                >
                     <input
                         onChange={(event) => this.onChange(event)}
                         value={this.state.name}
                         id="name"
                         name="name"
                     />
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name">
+                        Name
+                    </label>
                 </div>
                 <div className="input-group">
                     <input
@@ -81,7 +85,9 @@ export class AddTodo extends Component {
                       are in the selection set of the query in the second parameter
                       of graphqlMutation.
                     */}
-                    <button type="submit">
+                    <button
+                        className={`${Math.random() - .666 > 0 ? 'jaunty-alt' : Math.random() - .333 > 0 ?  '' : 'jaunty'}`}
+                        type="submit">
                         Add
                     </button>
                 </div>
